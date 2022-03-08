@@ -1,0 +1,71 @@
+\chapter{Практические задания}
+
+    \section{Задание 4}
+    
+        \( ( list\ 'Fred\ 'and\ 'Wilma )\ \Rightarrow\ '(Fred\ and\ Wilma)\)
+
+        \( ( list\ 'Fred\ '(and\ Wilma) )\ \Rightarrow\ '(Fred\ (and\ Wilma))\)
+
+        \( ( cons\ Nil\ Nil )\ \Rightarrow\ '(Nil)\)
+
+        \( ( cons\ T\ Nil )\ \Rightarrow\ '(T)\)
+
+        \( ( cons\ Nil\ T )\ \Rightarrow\ (Nil\ .\ T)\)
+
+        \( ( list\ Nil )\ \Rightarrow\ '(Nil)\)
+
+        \( ( cons\ '(T)\ Nil )\ \Rightarrow\ '((T))\)
+
+        \( ( list\ '(one\ two)\ '(free\ temp) )\ \Rightarrow\ '((one\ two)\ (free\ temp))\)
+        
+        \bigskip
+
+        \( ( cons\ 'Fred\ '(and\ Wilma) )\ \Rightarrow\ '(Fred\ and\ Wilma)\)
+
+        \( ( cons\ 'Fred\ '(Wilma) )\ \Rightarrow\ '(Fred\ Wilma)\)
+
+        \( ( list\ Nil\ Nil)\ \Rightarrow\ '(Nil\ Nil)\)
+
+        \( ( list\ T\ Nil)\ \Rightarrow\ '(T\ Nil)\)
+
+        \( ( list\ Nil\ T)\ \Rightarrow\ '(Nil\ T)\)
+
+        \( ( cons\ T\ (list\ Nil))\ \Rightarrow\ '( cons\ T\ (Nil))\ \Rightarrow\ '(T\ Nil)\)
+
+        \( ( list\ '(T)\ Nil )\ \Rightarrow\ '((T)\ Nil)\)
+
+        \( ( cons\ '(one\ two)\ '(free\ temp) )\ \Rightarrow\ '((one\ two)\ free\ temp)\)
+    
+    \section{Задание 5}
+
+        \subsection*{Написать функцию \texttt{(f ar1 ar2 ar3 ar4)}, возвращающую список: \texttt{((ar1 ar2) (ar3 ar4))}}
+
+            \texttt{(lambda (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4)))}
+            
+            \texttt{(defun f (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4)))}
+
+        \subsection*{Написать функцию \texttt{(f ar1 ar2)}, возвращающую список: \texttt{((ar1) (ar2))}}
+
+            \texttt{(lambda (ar1 ar2) (list (list ar1) (list ar2)))}
+            
+            \texttt{(defun f (ar1 ar2) (list (list ar1) (list ar2)))}
+
+        \subsection*{Написать функцию \texttt{(f ar1)}, возвращающую список: \texttt{((ar1))}}
+
+            \texttt{(lambda (ar1) (list (list (list ar1)))}
+            
+            \texttt{(defun f (ar1) (list (list (list ar1))))}
+    
+        \includeimage{filp1-1-lambda}{f}{th}{\textwidth}{\texttt{(lambda (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4)))} в виде списочных ячеек}
+
+        \includeimage{filp1-1-defun}{f}{th}{\textwidth}{\texttt{(defun f (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4)))} в виде списочных ячеек}
+        
+        \includeimage{filp1-2-lambda}{f}{th}{\textwidth}{\texttt{(lambda (ar1 ar2) (list (list ar1) (list ar2)))} в виде списочных ячеек}
+        
+        \includeimage{filp1-2-defun}{f}{th}{\textwidth}{\texttt{(defun f (ar1 ar2) (list (list ar1) (list ar2)))} в виде списочных ячеек}
+        
+        \includeimage{filp1-3-lambda}{f}{th}{\textwidth}{\texttt{(lambda (ar1) (list (list (list ar1)))} в виде списочных ячеек}
+        
+        \includeimage{filp1-3-defun}{f}{th}{\textwidth}{\texttt{(defun f (ar1) (list (list (list ar1)))} в виде списочных ячеек}
+        
+\clearpage
