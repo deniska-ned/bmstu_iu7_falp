@@ -1,0 +1,204 @@
+\chapter{Практическая часть}
+
+    \section{Написать хвостовую рекурсивную функцию my-reverse, которая развернет верхний уровень своего списка-аргумента lst}
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun move-to (lst result)
+  (cond ((null lst)(res))
+        (T(move-to (cdr lst)(cons (car lst) res)))))
+
+(defun my-reverse (lst)
+  (move-to lst ())
+        \end{lstlisting}
+
+    \section{Написать функцию, которая возвращает первый элемент списка-аргумента, который сам является непустым списком.}
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun get-notnull(lst)
+  (cond ((null lst)Nil)
+        ((and (listp lst)(> (length lst) 0))(car lst))
+        (T(get-notnull lst))))
+        \end{lstlisting}
+
+    \section{Написать функцию, которая выбирает из заданного списка только те числа, которые больше 1 и меньше 10}
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun move-to (lst res)
+  (cond ((null lst)(res))
+        ((and (numberp (car lst))(> 0 (car lst) 10))
+         (move-to (cdr lst)(cons (car lst) res)))
+        (T(move-to (cdr lst)res))))
+
+(defun select-gt-0-lt-10 (lst)
+  (move-to lst ())
+        \end{lstlisting}
+
+    \section{Напишите рекурсивную функцию, которая умножает на заданное число-аргумент все числа из заданного списка-аргумента, когда}
+    
+        \subsection{все элементы списка --- числа}
+            \begin{lstlisting} [
+            	float=h!,
+            	frame=single,
+            	numbers=left,
+            	abovecaptionskip=-5pt,
+            	caption={},
+            	label={lst:1-1},
+            	language={Lisp},
+            ]
+(defun mult-2 (lst)
+  (cond ((null lst)Nil)
+        (T(cons (* 2 (car lst))
+                (mult-2 (cdr lst))))))
+            \end{lstlisting}
+            
+        \subsection{элементы списка -- любые объекты}
+            \begin{lstlisting} [
+            	float=h!,
+            	frame=single,
+            	numbers=left,
+            	abovecaptionskip=-5pt,
+            	caption={},
+            	label={lst:1-1},
+            	language={Lisp},
+            ]
+(defun mult-2-any (lst)
+  (cond ((null lst)Nil)
+        ((numberp lst)(cons (* 2 (car lst))
+                            (mult-2 (cdr lst))))
+        ((listp lst)(cons (mult-2-any (car lst))
+                          (mult-2 (cdr lst))))))
+        (T (cons (car lst)
+                 (mult-2 (cdr lst))))))
+            \end{lstlisting}
+
+    \section{Напишите функцию, select-between, которая из списка-аргумента, содержащего только числа, выбирает только те, которые расположены между двумя указанными границами аргументами и возвращает их в виде списка (упорядоченного по возрастанию списка чисел }
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun select-between (from to lst)
+  (cond ((null lst)Nil)
+        ((< from (car lst) to)(cons (car lst)
+                                    (select-between from to (cdr lst))))
+        (T(select-between from to (cdr lst)))))
+        \end{lstlisting}
+
+    \section{Написать рекурсивную версию (с именем rec-add) вычисления суммы чисел заданного списка:}
+    
+        \subsection{одноуровнего смешанного}
+            \begin{lstlisting} [
+            	float=h!,
+            	frame=single,
+            	numbers=left,
+            	abovecaptionskip=-5pt,
+            	caption={},
+            	label={lst:1-1},
+            	language={Lisp},
+            ]
+(defun rec-add-internal (lst sum)
+  (cond ((null lst)sum)
+        (T(rec-add-internal (cdr lst) (+ (car lst) sum)))))
+        
+(defun rec-add (lst)
+  (rec-add-internal lst s0))
+            \end{lstlisting}
+    
+        \subsection{структурированного}
+            \begin{lstlisting} [
+            	float=h!,
+            	frame=single,
+            	numbers=left,
+            	abovecaptionskip=-5pt,
+            	caption={},
+            	label={lst:1-1},
+            	language={Lisp},
+            ]
+(defun rec-add-internal (lst sum)
+  (cond ((null lst)sum)
+        ((listp lst)(rec-add-internal (car lst) (+ (rec-add-internal (car lst) 0) sum)))
+        (T(rec-add-internal (cdr lst) (+ (car lst) sum)))))
+        
+(defun rec-add (lst)
+  (rec-add-internal lst s0))
+            \end{lstlisting}
+
+    \section{Написать рекурсивную версию с именем recnth функции nth}
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun recnth (i lst)
+  (cond ((< i 0)Nil)
+        ((= i 0)(car lst))
+        (T(recnth (- i 1)(cdr lst)))))
+        \end{lstlisting}
+
+    \section{Написать рекурсивную функцию allodd, которая возвращает t когда все элементы списка нечетные.}
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun allodd (lst)
+  (cond ((null lst)T)
+        ((evenp (car lst))Nil)
+        (T(allodd (cdr lst)))))
+        \end{lstlisting}
+
+    \section{Используя cons-дополняемую рекурсию с одним тестом завершения, написать функцию которая получает как аргумент список чисел, а возвращает список квадратов этих чисел в том же порядке.}
+    
+        \begin{lstlisting} [
+        	float=h!,
+        	frame=single,
+        	numbers=left,
+        	abovecaptionskip=-5pt,
+        	caption={},
+        	label={lst:1-1},
+        	language={Lisp},
+        ]
+(defun mult-2 (lst)
+  (cond ((null lst)Nil)
+        (T(cons (* (car lst) (car lst))
+                (mult-2 (cdr lst))))))
+        \end{lstlisting}
