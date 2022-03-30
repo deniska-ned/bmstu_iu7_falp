@@ -1,4 +1,4 @@
-(load #P"/home/d.nedoluzhko/quicklisp/setup.lisp")
+(load #P"~/quicklisp/setup.lisp")
 
 (ql:quickload "fiveam")
 
