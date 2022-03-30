@@ -4,7 +4,6 @@
 
 (load "src/quadro.lisp")
 
-
 (fiveam:test quadro-root-all
   (fiveam:is-true (solve-quadratic 0 0 0)))
 
@@ -22,6 +21,5 @@
 
 (fiveam:test quadro-root-2-root-complex
   (fiveam:is-true (equalp '(#C(-7.0 1.0) #C(-7.0 -1.0)) (solve-quadratic 0.5 7 25))))
-
 
 (fiveam:run!)
